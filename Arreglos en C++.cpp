@@ -21,5 +21,26 @@ void agregarHabito() {
     }
     total++;
 }
+void marcarDia() { //opcion para marcar los dias si no tenemos habitos agregados la funcion if nos devolvera lo siguiente
+    if (total == 0) {
+        cout << "Primero agregue al menos un habito.\n";
+        return;
+    }
 
+    int dia; // esta variable es donde indicamos el dia que queremos marcar como cumplido nuestro habito si el dia no es del 1 al 7 muestra lo siguiente
+    cout << "Dia (1-7): ";
+    cin >> dia;
+    if (dia < 1 || dia > 7) {
+        cout << "Dia invalido.\n";
+        return;
+    }
+    dia--;
+
+    for (int i = 0; i < total; i++) {
+        char hecho; // esta funcion char nos sirve para ingresar nuestra respuesta de un caracter en este caso s y n que significan si o no
+        cout << " ¿Cumpliste '" << habitos[i] << "'? (s/n): ";
+        cin >> hecho;
+        registro[i][dia] = (hecho == 's' || hecho == 'S') ? 1 : 0;
+    }
+}
 
